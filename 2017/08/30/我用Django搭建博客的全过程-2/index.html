@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/home.html.png">
 <meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/post.html.png">
 <meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/%E4%BF%AE%E6%94%B9%E5%90%8E%E7%9A%84home.html.png">
-<meta property="og:updated_time" content="2017-09-03T09:13:24.324Z">
+<meta property="og:updated_time" content="2017-09-03T09:15:34.881Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我用 Django 搭建博客的全过程(2)">
 <meta name="twitter:description" content="一附上我在 README 上写的本项目将要实现的一些功能：   开发环境搭建 创建 Django 项目和 App 设计数据库 创建超级用户及后台管理 views 和 urls 的工作原理 Templates 模板 配置 MarkDown 归档，列出当前博客中所有文章并且显示时间 About 界面 标签分类 RSS 和分页、Readmore  我没做成功的：搜索功能  这篇主要讲解第 5 点至第 6">
@@ -408,6 +408,14 @@
 <p>讲解：这里新加了一个找不到页面的 404 ，id 是每篇博文的唯一标识，使用 id 对数据库中的博文进行查找。</p>
 <p>修改 urls.py<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">from django.conf.urls import url</div><div class="line">from django.contrib import admin</div><div class="line">from article import views            </div><div class="line"></div><div class="line">urppatterns = [</div><div class="line">    </div><div class="line">    url(r&apos;^admin/&apos;,admin.site.urls),</div><div class="line">    url(r&apos;^$&apos;,views.home),   </div><div class="line">    url(r&apos;^(?P&lt;id&gt;\d+)/$&apos;,views.detail, name=&apos;detail&apos;),    # new   </div><div class="line">]</div></pre></td></tr></table></figure></p>
 <p>讲解：现在可以访问 127.0.0.1:8000 点击对应的博文标题就能跳转到独立的页面中了。</p>
+<p><strong>小结：</strong><br>面对用户的请求，Django 做了以下工作，</p>
+<ol>
+<li>web 服务器收到一个 http 请求。</li>
+<li>Django 在 urls.py 里查找对应的 views.py 函数来处理 http 请求。</li>
+<li>views 函数调用不同的 Model 和 Templates 来完成最终展示界面。</li>
+<li>views 函数返回 http 响应给 web 服务器。</li>
+</ol>
+<p><strong><em>三</em></strong><br>终于把最复杂的部分写完了，剩下的 7-11 点放到下一篇。<br>继续加油！</p>
 
       
     </div>
