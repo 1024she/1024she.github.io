@@ -107,7 +107,8 @@
 <meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/base-head.png">
 <meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/home.html.png">
 <meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/post.html.png">
-<meta property="og:updated_time" content="2017-09-03T09:05:12.577Z">
+<meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/%E4%BF%AE%E6%94%B9%E5%90%8E%E7%9A%84home.html.png">
+<meta property="og:updated_time" content="2017-09-03T09:10:12.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我用 Django 搭建博客的全过程(2)">
 <meta name="twitter:description" content="一附上我在 README 上写的本项目将要实现的一些功能：   开发环境搭建 创建 Django 项目和 App 设计数据库 创建超级用户及后台管理 views 和 urls 的工作原理 Templates 模板 配置 MarkDown 归档，列出当前博客中所有文章并且显示时间 About 界面 标签分类 RSS 和分页、Readmore  我没做成功的：搜索功能  这篇主要讲解第 5 点至第 6">
@@ -400,6 +401,8 @@
 <p>现在重新访问127.0.0.1:8000 就能看到一个博客的框架了。截止目前，我们写了 base.html 和 home.html，同时也配置好了 views.py 和 urls.py。</p>
 <p><strong>继续不要停！</strong><br>我们希望每篇博文都有一个独立的页面，强大的 Django 给我们提供了动态 URL<br>继续插播：”我把 Django 比作买了一块地自己动手一砖一瓦盖房子，而 hexo 就是精装的商品房，简单装修后即可拎包入住。所以说用 Django 搭博还是蛮累的～”</p>
 <p>在 templates 文件夹下新建一个 post.html(用来显示单页博文的页面) 见图：<br><img src="http://ove06nbz7.bkt.clouddn.com/post.html.png" alt="post.html"><br>讲解：第 2 行继承不必说了，第 5 行第 23 行成对出现，中间部分与 home.html 类似，不同的是加上去具体时间<strong>date:”Y-m-d”</strong>时间的形式随你喜欢。</p>
+<p>修改 home.html 和 base.html 去掉循环加入动态链接和一些按钮。<br>修改 home.html 见图：<br><img src="http://ove06nbz7.bkt.clouddn.com/%E4%BF%AE%E6%94%B9%E5%90%8E%E7%9A%84home.html.png" alt="修改后的 hoem.html"></p>
+<p>讲解：第 9 行加入了{% url "detail" id=post.id %}，当点击这个文章题目时，会将对应的数据库对象的 id 传入的 url 中，将数据库对象唯一的 id 传送给 url 设置，url 取出这个 id 给对应的 view 中的函数逻辑当做参数。例如:点击博文标题的对象对应的 id=2，这个 id 被传送到 name=detail 的 url 中，’^(?P\d+)/$’正则表达式匹配后取出id，然后将 id 传送到 article.views.detail 作为函数参数，然后通过 get 方法获取对应的数据库对象，然后对模板进行渲染，发送到浏览器中..</p>
 
       
     </div>
