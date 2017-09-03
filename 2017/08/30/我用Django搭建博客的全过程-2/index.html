@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/test.html.png">
 <meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/base-head.png">
 <meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/home.html.png">
-<meta property="og:updated_time" content="2017-09-03T09:02:14.828Z">
+<meta property="og:updated_time" content="2017-09-03T09:03:27.908Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我用 Django 搭建博客的全过程(2)">
 <meta name="twitter:description" content="一附上我在 README 上写的本项目将要实现的一些功能：   开发环境搭建 创建 Django 项目和 App 设计数据库 创建超级用户及后台管理 views 和 urls 的工作原理 Templates 模板 配置 MarkDown 归档，列出当前博客中所有文章并且显示时间 About 界面 标签分类 RSS 和分页、Readmore  我没做成功的：搜索功能  这篇主要讲解第 5 点至第 6">
@@ -394,6 +394,9 @@
 <p>插播说一个 static 文件放置的问题，同样在 article 文件夹下新建 static 文件夹，用来放置 CSS 和 img<br>把从 pure 下载的素材放到 static 文件夹下，那么刚刚写完的 base.html 就要做一些修改，让它正确引用 static里的 CSS，我在这个地方掉坑了，弄了很久 CSS 都渲染不出来，血和泪的教训才萌发要写这篇博文，见图：<br><img src="http://ove06nbz7.bkt.clouddn.com/base-head.png" alt="修改 base.html"><br>如图，在第 2 行加上{% load staticfiles %}表示加载 static 文件，在第 12 行 link 链接本地下载的 pure 素材要用{% static pure 素材存放的路径 %}</p>
 <p>可以开始写 home.html 了<br><img src="http://ove06nbz7.bkt.clouddn.com/home.html.png" alt="home.html"><br>讲解：第 2 行便是继承 base.html，第 4 行和第 24 行是成对的，中间包含的便是继承后的改写部分，第 6 行和第 22 行也是成对的，{% for post in post_list %}表示写的博文(标题、标签、正文)会传递到这里，这是 template 中提供的 for 循环。</p>
 <p>接下来编辑 views.py 和 urls.py<br>修改 views.py 并删除 test<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">from django.shortcuts import render</div><div class="line">from django.http import HttpResponse   </div><div class="line">from article.models import Article    </div><div class="line">from datetime import datetime                         </div><div class="line"></div><div class="line">#Create your views here.</div><div class="line">def home(request):                                              # new</div><div class="line">    post_list = Article.objects.all()                      </div><div class="line">    return render(request,&apos;home.html&apos;, &#123;&apos;post_list&apos;:post_list&#125;)</div></pre></td></tr></table></figure></p>
+<p>接下来编辑 views.py 和 urls.py<br>修改 views.py 并删除 test</p>
+<p>修改 urls.py<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">from django.conf.urls import url</div><div class="line">from django.contrib import admin</div><div class="line">from article import views            </div><div class="line"></div><div class="line">urppatterns = [</div><div class="line">    </div><div class="line">    url(r&apos;^admin/&apos;,admin.site.urls),</div><div class="line">    url(r&apos;^$&apos;,views.home),      </div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>现在重新访问127.0.0.1:8000 就能看到一个博客的框架了。截止目前，我们写了 base.html和 home.html，同时也配置好了 views.py 和 urls.py。</p>
 
       
     </div>
