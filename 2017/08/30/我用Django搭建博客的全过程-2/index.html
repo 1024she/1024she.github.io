@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/test.html.png">
 <meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/base-head.png">
 <meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/home.html.png">
-<meta property="og:updated_time" content="2017-09-03T09:00:29.692Z">
+<meta property="og:updated_time" content="2017-09-03T09:02:14.828Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我用 Django 搭建博客的全过程(2)">
 <meta name="twitter:description" content="一附上我在 README 上写的本项目将要实现的一些功能：   开发环境搭建 创建 Django 项目和 App 设计数据库 创建超级用户及后台管理 views 和 urls 的工作原理 Templates 模板 配置 MarkDown 归档，列出当前博客中所有文章并且显示时间 About 界面 标签分类 RSS 和分页、Readmore  我没做成功的：搜索功能  这篇主要讲解第 5 点至第 6">
@@ -393,6 +393,7 @@
 <p>讲解：我这里使用的是 pure 。这里简单介绍一下这位新朋友，来看看官网上对它的介绍：<br><em>美国雅虎公司出品的一组轻量级、响应式纯css模块，适用于任何Web项目。</em><br><a href="https://purecss.io/" target="_blank" rel="external">pure 官网</a><br><a href="https://www.purecss.cn/" target="_blank" rel="external">pure 中文网</a><br>所以上面 link 链接的就是 pure 的代码，可以在 pure 官网或 pure 中文网上简单学习它的基础用法，不赘述。<br>重点在于{% block content %}和{% endblock %}，它用来被其他 html 继承这个基类模板进行重写，等下我们写 home.html 时就不需要再写通用的左侧和页尾了，只需要继承自 base.html。</p>
 <p>插播说一个 static 文件放置的问题，同样在 article 文件夹下新建 static 文件夹，用来放置 CSS 和 img<br>把从 pure 下载的素材放到 static 文件夹下，那么刚刚写完的 base.html 就要做一些修改，让它正确引用 static里的 CSS，我在这个地方掉坑了，弄了很久 CSS 都渲染不出来，血和泪的教训才萌发要写这篇博文，见图：<br><img src="http://ove06nbz7.bkt.clouddn.com/base-head.png" alt="修改 base.html"><br>如图，在第 2 行加上{% load staticfiles %}表示加载 static 文件，在第 12 行 link 链接本地下载的 pure 素材要用{% static pure 素材存放的路径 %}</p>
 <p>可以开始写 home.html 了<br><img src="http://ove06nbz7.bkt.clouddn.com/home.html.png" alt="home.html"><br>讲解：第 2 行便是继承 base.html，第 4 行和第 24 行是成对的，中间包含的便是继承后的改写部分，第 6 行和第 22 行也是成对的，{% for post in post_list %}表示写的博文(标题、标签、正文)会传递到这里，这是 template 中提供的 for 循环。</p>
+<p>接下来编辑 views.py 和 urls.py<br>修改 views.py 并删除 test<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">from django.shortcuts import render</div><div class="line">from django.http import HttpResponse   </div><div class="line">from article.models import Article    </div><div class="line">from datetime import datetime                         </div><div class="line"></div><div class="line">#Create your views here.</div><div class="line">def home(request):                                              # new</div><div class="line">    post_list = Article.objects.all()                      </div><div class="line">    return render(request,&apos;home.html&apos;, &#123;&apos;post_list&apos;:post_list&#125;)</div></pre></td></tr></table></figure></p>
 
       
     </div>
