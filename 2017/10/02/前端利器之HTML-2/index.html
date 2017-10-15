@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal
+Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="HTML," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="前端利器之 HTML 目录HTML 简介、基础结构、最基础标签和格式标签HTML 表单标签 HTML 框架标签和图像标签HTML 音频、视频标签和链接标签HTML 列表标签和表格标签 三、HTML 标签3.表单标签">
+<meta name="keywords" content="HTML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端利器之HTML(2)">
+<meta property="og:url" content="http://yoursite.com/2017/10/02/前端利器之HTML-2/index.html">
+<meta property="og:site_name" content="壹零贰肆">
+<meta property="og:description" content="前端利器之 HTML 目录HTML 简介、基础结构、最基础标签和格式标签HTML 表单标签 HTML 框架标签和图像标签HTML 音频、视频标签和链接标签HTML 列表标签和表格标签 三、HTML 标签3.表单标签">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/2017-10-02%2018-53-03%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
+<meta property="og:updated_time" content="2017-10-04T15:58:18.374Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端利器之HTML(2)">
+<meta name="twitter:description" content="前端利器之 HTML 目录HTML 简介、基础结构、最基础标签和格式标签HTML 表单标签 HTML 框架标签和图像标签HTML 音频、视频标签和链接标签HTML 列表标签和表格标签 三、HTML 标签3.表单标签">
+<meta name="twitter:image" content="http://ove06nbz7.bkt.clouddn.com/2017-10-02%2018-53-03%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/10/02/前端利器之HTML-2/"/>
+
+
+
+
+
+  <title>前端利器之HTML(2) | 壹零贰肆</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">壹零贰肆</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">1024</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-search">
+          <a href="/search/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-search"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/02/前端利器之HTML-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tularrrrr">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/1024.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="壹零贰肆">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端利器之HTML(2)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-02T17:38:19+08:00">
+                2017-10-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/10/02/前端利器之HTML-2/" class="leancloud_visitors" data-flag-title="前端利器之HTML(2)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong><em>前端利器之 HTML 目录</em></strong><br><a href="http://tularrrrr.coding.me/2017/10/02/%E5%89%8D%E7%AB%AF%E5%88%A9%E5%99%A8%E4%B9%8BHTML-1/" target="_blank" rel="external">HTML 简介、基础结构、最基础标签和格式标签</a><br><a href="http://tularrrrr.coding.me/2017/10/02/%E5%89%8D%E7%AB%AF%E5%88%A9%E5%99%A8%E4%B9%8BHTML-2/" target="_blank" rel="external">HTML 表单标签 </a><br><a href="http://tularrrrr.coding.me/2017/10/02/%E5%89%8D%E7%AB%AF%E5%88%A9%E5%99%A8%E4%B9%8BHTML-3/" target="_blank" rel="external">HTML 框架标签和图像标签</a><br><a href="http://tularrrrr.coding.me/2017/10/04/%E5%89%8D%E7%AB%AF%E5%88%A9%E5%99%A8%E4%B9%8BHTML-4/" target="_blank" rel="external">HTML 音频、视频标签和链接标签</a><br><a href="http://tularrrrr.coding.me/2017/10/04/%E5%89%8D%E7%AB%AF%E5%88%A9%E5%99%A8%E4%B9%8BHTML-5/" target="_blank" rel="external">HTML 列表标签和表格标签</a></p>
+<p><strong><em>三、HTML 标签</em></strong><br><strong>3.表单标签</strong><br><img src="http://ove06nbz7.bkt.clouddn.com/2017-10-02%2018-53-03%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt="表单标签"></p>
+<a id="more"></a>
+<p>讲解：form 标签。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">&lt;form action=&quot;表单提交地址&quot; method=&quot;提交方法&quot;&gt;</div><div class="line">    ...文本框、按钮等表单元素...</div><div class="line">&lt;/form&gt;</div><div class="line"></div><div class="line">form 标签的属性：</div><div class="line">accept-charset ： 在被提交表单中使用的字符集(默认:页面字符集)</div><div class="line">action ： 指定表单提交后由服务器上的程序进行处理</div><div class="line">autocomplete : 浏览器应该自动完成表单(默认:开启)</div><div class="line">enctype ： 指定表单数据的编码方式(默认:url-encoded)</div><div class="line">method ： 指定向服务器提交的方式(GET、POST)</div><div class="line">name : 识别表单的名称(对于 DOM 使用:document.forms.name)</div><div class="line">novalidate ： 浏览器不验证表单</div><div class="line">target ： action 属性中地址的目标(默认:_self)</div><div class="line"></div><div class="line">name 属性</div><div class="line">如果想要正确地被提交，每个输入字段必须设置一个 name 属性。</div><div class="line">本例只会提交 &quot;Last name&quot; 的输入字段：</div><div class="line">&lt;form action=&quot;action_page.php&quot;&gt;</div><div class="line">    First name: &lt;br&gt;</div><div class="line">    &lt;input type=&quot;text&quot; value=&quot;Mickey&quot;&gt;</div><div class="line">    &lt;br&gt;</div><div class="line">    Last name: &lt;br&gt;</div><div class="line">    &lt;input type=&quot;text&quot; name=&quot;lastname&quot; value=&quot;Mouse&quot;&gt;</div><div class="line">    &lt;br&gt;&lt;br&gt;</div><div class="line">    &lt;input type=&quot;submit&quot; value=&quot;Submit&quot;&gt;</div><div class="line">&lt;/form&gt;</div><div class="line"></div><div class="line">使用 GET（默认方法）：</div><div class="line">如果表单提交是被动的（比如搜索引擎查询），并且没有敏感信息。</div><div class="line">使用 GET  时，表单数据在页面地址栏中是可见的：action_page.php?firstname=Mickey&amp;lastname=Mouse</div><div class="line">注：GET 最适合少量数据的提交，浏览器会设定容量限制。</div><div class="line"></div><div class="line">使用 POST：</div><div class="line">如果表单正在更新数据，或者包含敏感信息（例如密码）。</div><div class="line">POST 的安全性更加，因为在页面地址栏中被提交的数据是不可见的。</div></pre></td></tr></table></figure></p>
+<p>讲解：input 标签。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;text&quot;&gt;     单行文本框</div><div class="line">&lt;input type=&quot;password&quot;&gt; 密码输入框，password 字段中的字符会被做掩码处理（显示为星号或实心圆）。</div><div class="line">&lt;input type=&quot;hidden&quot;&gt;   隐藏域</div><div class="line">&lt;input type=&quot;radio&quot;&gt;    单选框</div><div class="line">&lt;input type=&quot;checkbox&quot;&gt; 复选框，允许用户在有限数量的选项中选择零个或多个选项</div><div class="line">&lt;input type=&quot;image&quot;&gt;    图像域，可设置宽高</div><div class="line">&lt;input type=&quot;file&quot;&gt;     文件上传域</div><div class="line">&lt;input type=&quot;submit&quot;&gt;   提交</div><div class="line">&lt;input type=&quot;reset&quot;&gt;    重置</div><div class="line">&lt;input type=&quot;button&quot;&gt;   普通按钮</div><div class="line">&lt;input type=&quot;number&quot;&gt;   数字值输入</div><div class="line">&lt;input type=&quot;data&quot;&gt;     日期的输入</div><div class="line">&lt;input type=&quot;color&quot;&gt;    颜色的输入</div><div class="line">&lt;input type=&quot;range&quot;&gt;    一定范围值的输入</div><div class="line">&lt;input type=&quot;month&quot;&gt;    允许选择月份和年份</div><div class="line">&lt;input type=&quot;week&quot;&gt;     允许选择周和年</div><div class="line">&lt;input type=&quot;time&quot;&gt;     选择无时区的时间</div><div class="line">&lt;input type=&quot;datetime&quot;&gt; 选择有时区的时间</div><div class="line">&lt;input type=&quot;email&quot;&gt;    电子邮件的输入</div><div class="line">&lt;input type=&quot;search&quot;&gt;   用于搜索字段</div><div class="line">&lt;input type=&quot;tel&quot;&gt;      电话号码的输入</div><div class="line">&lt;input type=&quot;url&quot;&gt;      URL 地址的输入</div><div class="line"></div><div class="line">input 标签常用属性：</div><div class="line">checked ： 设置单、复选框</div><div class="line">disable ： 设置首次加载时禁用此元素</div><div class="line">maxlegth ： 允许文本框输入最大的字符数</div><div class="line">readobly ： 文本框的值只读，不允许修改</div><div class="line">size ： 指定元素长度</div><div class="line">src ： 链接地址</div></pre></td></tr></table></figure></p>
+<p>讲解：textarea 标签。<br>定义多行文本的输入控件。<code>&lt;textarea name=&quot;&quot; id=&quot;&quot; cols=&quot;列宽&quot; rows=&quot;行宽&quot; readonly=&quot;只读&quot;&gt;&lt;/textarea&gt;</code></p>
+<p>讲解：button 标签。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;button type=&quot;button&quot; onclick=&quot;alert(&apos;hello&apos;)&quot;&gt;Click me&lt;/button&gt;</div><div class="line"></div><div class="line">button 标签常用属性：</div><div class="line">disabled : 指定是否禁用此元素</div><div class="line">name : 指定按钮唯一名称</div><div class="line">type : 指定按钮类型，只能是 button、reset、submit</div></pre></td></tr></table></figure></p>
+<p>讲解：select 标签。<br>列表框和下拉菜单。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;select name=&quot;指定列表名称&quot; size=&quot;行数&quot; id=&quot;&quot;&gt;</div><div class="line">    &lt;option value=&quot;选项值&quot;&gt;&lt;/option&gt;</div><div class="line">&lt;/select&gt;</div><div class="line"></div><div class="line">select 标签常用属性：</div><div class="line">multipe : 设置列表框是否允许多选</div><div class="line">size : 指定列表内同时显示多少列表项</div><div class="line"></div><div class="line">例子：</div><div class="line">&lt;select name=&quot;city&quot; id=&quot;city&quot; multipe=&quot;multipe&quot; size=&quot;3&quot;&gt;</div><div class="line">    &lt;option value=&quot;city&quot;&gt;北京&lt;/option&gt;</div><div class="line">    &lt;option value=&quot;city&quot;&gt;天津&lt;/option&gt;</div><div class="line">    &lt;option value=&quot;city&quot;&gt;上海&lt;/option&gt;</div><div class="line">    &lt;option value=&quot;city&quot;&gt;广州&lt;/option&gt;</div><div class="line">&lt;/select&gt;</div><div class="line">注：下拉菜单少一个属性 size=&quot;3&quot;，列表框则具有 size 属性</div></pre></td></tr></table></figure></p>
+<p>讲解：optgroup 标签和 option 标签。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1.&lt;option&gt;用于定义列表框选项或菜单项。</div><div class="line">2.&lt;optgroup&gt;用于定义列表框选项或菜单项组。必填属性：label</div></pre></td></tr></table></figure></p>
+<p>讲解：label标签。<code>例子：&lt;label for=&quot;password&quot;&gt;密码框&lt;/label&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; id=&quot;password&quot; size=&quot;5&quot; /&gt;</code></p>
+<p>讲解：fieldset 标签和 legend 标签。<br>fieldset 组合表单数据，legend 定义标题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;form action=&quot;action_page.php&quot;&gt;</div><div class="line">    &lt;fieldset&gt;</div><div class="line">        &lt;legend&gt;Personal information&lt;/legend&gt;</div><div class="line">        First name: &lt;br&gt;</div><div class="line">        &lt;input type=&quot;text&quot; name=&quot;firstname&quot; value=&quot;Mickey&quot;&gt;</div><div class="line">        &lt;br&gt;</div><div class="line">        Last name: &lt;br&gt;</div><div class="line">        &lt;input type=&quot;text&quot; name=&quot;lastname&quot; value=&quot;Mouse&quot;&gt;</div><div class="line">        &lt;br&gt;&lt;br&gt;</div><div class="line">        &lt;input type=&quot;submit&quot; value=&quot;Submit&quot;&gt;</div><div class="line">    &lt;/fieldset&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+    
+    
+
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTML/" rel="tag"><i class="fa fa-tag"></i> HTML</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/02/前端利器之HTML-1/" rel="next" title="前端利器之HTML(1)">
+                <i class="fa fa-chevron-left"></i> 前端利器之HTML(1)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/02/前端利器之HTML-3/" rel="prev" title="前端利器之HTML(3)">
+                前端利器之HTML(3) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/1024.png"
+              alt="tularrrrr" />
+          
+            <p class="site-author-name" itemprop="name">tularrrrr</p>
+            <p class="site-description motion-element" itemprop="description">坚持很酷</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/12141011" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/u/tularrrrr" target="_blank" title="Coding">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      Coding
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://taimingfawu.cn/" title="太鸣法务官方网站" target="_blank">太鸣法务官方网站</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tularrrrr</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.2</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qv2clFcjpItQYjEPIa740EDl-gzGzoHsz", "gHx9LaPY2Uy1l0Nz4mKv9WQp");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

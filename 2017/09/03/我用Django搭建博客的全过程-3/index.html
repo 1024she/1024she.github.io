@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal
+Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Django," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="我用 Django 搭建博客的全过程(1)我用 Django 搭建博客的全过程(2)接着写最后部分，还是继续附上我在 README 上写的本项目将要实现的一些功能：   开发环境搭建 创建 Django 项目和 App 设计数据库 创建超级用户及后台管理 views 和 urls 的工作原理 Templates 模板 配置 MarkDown 归档，列出当前博客中所有文章并且显示时间 About 界">
+<meta name="keywords" content="Django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我用 Django 搭建博客的全过程(3)">
+<meta property="og:url" content="http://yoursite.com/2017/09/03/我用Django搭建博客的全过程-3/index.html">
+<meta property="og:site_name" content="壹零贰肆">
+<meta property="og:description" content="我用 Django 搭建博客的全过程(1)我用 Django 搭建博客的全过程(2)接着写最后部分，还是继续附上我在 README 上写的本项目将要实现的一些功能：   开发环境搭建 创建 Django 项目和 App 设计数据库 创建超级用户及后台管理 views 和 urls 的工作原理 Templates 模板 配置 MarkDown 归档，列出当前博客中所有文章并且显示时间 About 界">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/settings.py.png">
+<meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/%E4%BF%AE%E6%94%B9%20post.html.png">
+<meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/2017-09-03%2021-05-59%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
+<meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/archives.html.png">
+<meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/2017-09-03%2021-21-18%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
+<meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/about.png">
+<meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/tag.png">
+<meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/2017-09-03%2021-49-50%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
+<meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/RSS.png">
+<meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/models.png">
+<meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/urls.png">
+<meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/2017-09-03%2022-21-19%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
+<meta property="og:updated_time" content="2017-09-03T14:39:56.490Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="我用 Django 搭建博客的全过程(3)">
+<meta name="twitter:description" content="我用 Django 搭建博客的全过程(1)我用 Django 搭建博客的全过程(2)接着写最后部分，还是继续附上我在 README 上写的本项目将要实现的一些功能：   开发环境搭建 创建 Django 项目和 App 设计数据库 创建超级用户及后台管理 views 和 urls 的工作原理 Templates 模板 配置 MarkDown 归档，列出当前博客中所有文章并且显示时间 About 界">
+<meta name="twitter:image" content="http://ove06nbz7.bkt.clouddn.com/settings.py.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/09/03/我用Django搭建博客的全过程-3/"/>
+
+
+
+
+
+  <title>我用 Django 搭建博客的全过程(3) | 壹零贰肆</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">壹零贰肆</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">1024</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-search">
+          <a href="/search/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-search"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/03/我用Django搭建博客的全过程-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tularrrrr">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/1024.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="壹零贰肆">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">我用 Django 搭建博客的全过程(3)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-03T17:18:16+08:00">
+                2017-09-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/09/03/我用Django搭建博客的全过程-3/" class="leancloud_visitors" data-flag-title="我用 Django 搭建博客的全过程(3)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="http://tularrrrr.coding.me/2017/08/29/%E6%88%91%E7%94%A8Django%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%85%A8%E8%BF%87%E7%A8%8B-1/" target="_blank" rel="external">我用 Django 搭建博客的全过程(1)</a><br><a href="http://tularrrrr.coding.me/2017/08/30/%E6%88%91%E7%94%A8Django%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%85%A8%E8%BF%87%E7%A8%8B-2/" target="_blank" rel="external">我用 Django 搭建博客的全过程(2)</a><br>接着写最后部分，还是继续附上我在 README 上写的本项目将要实现的一些功能：</p>
+<blockquote>
+<ol>
+<li>开发环境搭建</li>
+<li>创建 Django 项目和 App</li>
+<li>设计数据库</li>
+<li>创建超级用户及后台管理</li>
+<li>views 和 urls 的工作原理</li>
+<li>Templates 模板</li>
+<li>配置 MarkDown</li>
+<li>归档，列出当前博客中所有文章并且显示时间</li>
+<li>About 界面</li>
+<li>标签分类</li>
+<li>RSS 和分页、Readmore</li>
+</ol>
+<p><em>我没做成功的：搜索功能</em></p>
+<p>这里讲第 7 点到 11点。</p>
+</blockquote>
+<a id="more"></a>
+<p><strong><em>一</em></strong><br><strong>7.配置 MarkDown</strong><br>下载安装 MarkDown <code>$ sudo pip install markdown</code> 在 article 文件夹下建 templatetags 文件夹，在 templatetags 建 <strong>init</strong>.py(指明是 py 的包文件，init 前后加两下划线)，在 templatetags 文件夹中新建 custom_markdown.py 文件。<br>添加代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">import markdown</div><div class="line"></div><div class="line">from django import template</div><div class="line">from django.template.defaultfilters import stringfilter</div><div class="line">from django.utls.encoding import force_text</div><div class="line">from django.utls.safestring import mark_safe</div><div class="line"></div><div class="line">register = template.Library()        #自定义 filter 时必须加上</div><div class="line">@register.filter(is_safe=True)       #注册 template filter</div><div class="line">@stringfilter                        #希望字符串作为参数</div><div class="line">def custom_markdown(value):</div><div class="line">    return mark_safe(markdown.markdown(value,</div><div class="line">        extensions = [&apos;markdown.extensions.fencd_code&apos;,&apos;markdown.extensions.codehilite&apos;],</div><div class="line">        safe_mode=True,</div><div class="line">        enable_attributes=False))</div></pre></td></tr></table></figure></p>
+<p>在 settings.py 中的 INSTALLED_APPS 列表最后添加<code>article.templatetags.custom_markdown</code> 见图<br><img src="http://ove06nbz7.bkt.clouddn.com/settings.py.png" alt="修改 settings.py"><br>修改 post.html<br><img src="http://ove06nbz7.bkt.clouddn.com/%E4%BF%AE%E6%94%B9%20post.html.png" alt="修改 post.html"><br>修改 home.html<br><img src="http://ove06nbz7.bkt.clouddn.com/2017-09-03%2021-05-59%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt="修改 home.html"></p>
+<p><strong>8.归档，列出当前博客中所有文章并且显示时间</strong><br>在 templates 文件夹下新建 archives.html  见图<br><img src="http://ove06nbz7.bkt.clouddn.com/archives.html.png" alt="archives.html"><br>修改 views.py，其他不变新增代码，见图<br><img src="http://ove06nbz7.bkt.clouddn.com/2017-09-03%2021-21-18%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""><br>修改 urls.py 其他不变新增代码，<code>url(r&#39;^archives/$&#39;,views.archives, name=&#39;archives&#39;)</code></p>
+<p><strong>9.About 界面</strong><br>写到这里，这个自我介绍的界面就很简单啦！<br>在 templates 下新建 about.html<br><img src="http://ove06nbz7.bkt.clouddn.com/about.png" alt="about"><br>修改 views.py 其他不变新增代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def about(request):</div><div class="line">    return render(request,&apos;about.html&apos;)</div></pre></td></tr></table></figure></p>
+<p>修改 urls.py 其他不变新增代码<code>url(r&#39;^about/$&#39;, views.about, name=&#39;about&#39;)</code></p>
+<p><strong>10.标签分类</strong><br>实现功能：点击对应的标签按钮，跳转到相关标签的文章罗列。<br>在 templates 下新建 tag.html 文件，见图<br><img src="http://ove06nbz7.bkt.clouddn.com/tag.png" alt="tag.html"><br>讲解：通过传入对应点击的 tag，对 tag 进行查询。在 home.html，post.html，archive.html 文件中将 tag 对应的超链接代码均修改为{% url "search_tag" tag=post.category %}<br>在 views.py 新增代码，见图<br><img src="http://ove06nbz7.bkt.clouddn.com/2017-09-03%2021-49-50%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""><br>在 urls.py 新增代码<code>url(r&#39;^tag(?P&lt;tag&gt;\w+)/$&#39;,views.search_tag, name=&#39;search_tag&#39;)</code></p>
+<p><strong>11.RSS 和分页、Readmore</strong><br>1.RSS 功能<br>Django 中的 RSS 功能，可以从高层框架的聚合 Feed 框架中找到(The syndication feed framework)，上层 Feed 生成框架可以直接应用 Feed 类，直接继承 Feed 在其中定义自己的方法。<br>在 views.py 中定义类(其他不变新增以下代码)<br><img src="http://ove06nbz7.bkt.clouddn.com/RSS.png" alt="RSS-views"><br>在 models.py中重写 get_absolute_url 方法<br><img src="http://ove06nbz7.bkt.clouddn.com/models.png" alt="models"><br>修改 urls.py 见图<br><img src="http://ove06nbz7.bkt.clouddn.com/urls.png" alt=""><br>最后，在 base.html 中添加 RSS 按钮，不细说啦，这个很简单就在 nav 下添加就好。</p>
+<p>2.分页<br>当博客文章较多的时候，我们并不希望在主页上显示全部的博客文章，而是希望能够每页显示固定的文章数目。<br>简要说一下思路方法：首先添加包，然后重写 home 方法，最后修改模板。<br>修改 views.py(添加包)的 home 函数<br><img src="http://ove06nbz7.bkt.clouddn.com/2017-09-03%2022-21-19%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""><br>修改 home.html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">&lt;!--home.html--&gt;</div><div class="line">&#123;% extends &quot;base.html&quot; %&#125;</div><div class="line">&#123;% load custom_markdown %&#125;</div><div class="line"></div><div class="line">&#123;% block content %&#125;</div><div class="line">&lt;div class=&quot;posts&quot;&gt;</div><div class="line">    &#123;% for post in post_list %&#125;</div><div class="line">        &lt;section class=&quot;post&quot;&gt;</div><div class="line">            &lt;header class=&quot;post-header&quot;&gt;</div><div class="line">                &lt;h2 class=&quot;post-title&quot;&gt;&lt;a href=&quot;&#123;% url &quot;detail&quot; id=post.id %&#125;&quot;&gt;&#123;&#123; post.title &#125;&#125;&lt;/a&gt;&lt;/h2&gt;</div><div class="line"></div><div class="line">                    &lt;p class=&quot;post-meta&quot;&gt;</div><div class="line">                        Time: &lt;a class=&quot;post-date_time&quot; href=&quot;#&quot;&gt;&#123;&#123; post.date_time |date:&quot;Y-m-d&quot;&#125;&#125;&lt;/a&gt; &lt;a class=&quot;post-category post-category-yui&quot; href=&quot;&#123;% url &quot;search_tag&quot; tag=post.category %&#125;&quot;&gt;&#123;&#123; post.category|title &#125;&#125;&lt;/a&gt;</div><div class="line">                    &lt;/p&gt;</div><div class="line">            &lt;/header&gt;</div><div class="line"></div><div class="line">                &lt;div class=&quot;post-description&quot;&gt;</div><div class="line">                    &lt;p&gt;</div><div class="line">                        &#123;&#123; post.content|custom_markdown|truncatewords_html:20 &#125;&#125;</div><div class="line">                    &lt;/p&gt;</div><div class="line">                &lt;/div&gt;</div><div class="line">                &lt;a class=&quot;pure-button&quot; href=&quot;&#123;% url &quot;detail&quot; id=post.id %&#125;&quot;&gt;more&lt;/a&gt;</div><div class="line">        &lt;/section&gt;</div><div class="line">    &#123;% endfor %&#125;</div><div class="line"></div><div class="line">    &#123;% if post_list.object_list and post_list.paginator.num_pages &gt; 1 %&#125;</div><div class="line">    &lt;div&gt;</div><div class="line">        &lt;ul class=&quot;pager&quot;&gt;</div><div class="line">            &#123;% if post_list.has_previous %&#125;</div><div class="line">                &lt;li&gt;&lt;a href=&quot;?page=&#123;&#123; post_list.previous_page_number &#125;&#125;&quot;&gt;Pre Page&lt;/a&gt;&lt;/li&gt;</div><div class="line">            &#123;% endif %&#125;</div><div class="line"></div><div class="line">            &#123;% if post_list.has_next %&#125;</div><div class="line">                &lt;li&gt;&lt;a href=&quot;?page=&#123;&#123; post_list.next_page_number &#125;&#125;&quot;&gt;Next Page&lt;/a&gt;&lt;/li&gt;</div><div class="line">            &#123;% endif %&#125;</div><div class="line">        &lt;/ul&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &#123;% endif %&#125;</div><div class="line">&lt;/div&gt;</div><div class="line">&#123;% endblock %&#125;</div></pre></td></tr></table></figure></p>
+<p>3.Readmore<br>之前已经添加了 Readmore 按钮，我用的是 more，只需要一步修改 home.html 中变量的过滤器<br>将正文截断设置为 10，<code>{{ post.content|custom_markdown|truncatewords_html:20 }}</code></p>
+<p><strong><em>二</em></strong><br>总共 11 点终于写完了，完成一件事很开心啊！<br>我没做成功的‘搜索功能’我还会继续研究，到现在一个 Django 搭建的博客基本完成了，未来还有许多功能可以尝试，比如说：<br>1.留言板(连接数据库)<br>2.添加注册登录功能<br>日后研究 Django 还会继续更新到此博客上。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Django/" rel="tag"><i class="fa fa-tag"></i> Django</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/30/我用Django搭建博客的全过程-2/" rel="next" title="我用 Django 搭建博客的全过程(2)">
+                <i class="fa fa-chevron-left"></i> 我用 Django 搭建博客的全过程(2)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/02/前端利器之HTML-1/" rel="prev" title="前端利器之HTML(1)">
+                前端利器之HTML(1) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/1024.png"
+              alt="tularrrrr" />
+          
+            <p class="site-author-name" itemprop="name">tularrrrr</p>
+            <p class="site-description motion-element" itemprop="description">坚持很酷</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/12141011" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/u/tularrrrr" target="_blank" title="Coding">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      Coding
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://taimingfawu.cn/" title="太鸣法务官方网站" target="_blank">太鸣法务官方网站</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tularrrrr</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.2</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qv2clFcjpItQYjEPIa740EDl-gzGzoHsz", "gHx9LaPY2Uy1l0Nz4mKv9WQp");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

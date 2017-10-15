@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal
+Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Django," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="一我最早是在 Django 上搭建博客的，后来发现需要购买域名和空间后再部署到线上，索性就转到 hexo+coding 来搭建博客了。所以接下来我将简单说一下这两者搭博的区别，只是我个人的感受，不一定专业。 二附上我在 README 上写的本项目将要实现的一些功能：   开发环境搭建 创建 Django 项目和 App 设计数据库 创建超级用户及后台管理 views 和 urls 的工作原理 Te">
+<meta name="keywords" content="Django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我用 Django 搭建博客的全过程(1)">
+<meta property="og:url" content="http://yoursite.com/2017/08/29/我用Django搭建博客的全过程-1/index.html">
+<meta property="og:site_name" content="壹零贰肆">
+<meta property="og:description" content="一我最早是在 Django 上搭建博客的，后来发现需要购买域名和空间后再部署到线上，索性就转到 hexo+coding 来搭建博客了。所以接下来我将简单说一下这两者搭博的区别，只是我个人的感受，不一定专业。 二附上我在 README 上写的本项目将要实现的一些功能：   开发环境搭建 创建 Django 项目和 App 设计数据库 创建超级用户及后台管理 views 和 urls 的工作原理 Te">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/%E5%88%9B%E5%BB%BAmodels.png">
+<meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/admin%E7%99%BB%E5%BD%95.png">
+<meta property="og:image" content="http://ove06nbz7.bkt.clouddn.com/admin%E5%90%8E%E5%8F%B0.png">
+<meta property="og:updated_time" content="2017-09-01T16:43:16.915Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="我用 Django 搭建博客的全过程(1)">
+<meta name="twitter:description" content="一我最早是在 Django 上搭建博客的，后来发现需要购买域名和空间后再部署到线上，索性就转到 hexo+coding 来搭建博客了。所以接下来我将简单说一下这两者搭博的区别，只是我个人的感受，不一定专业。 二附上我在 README 上写的本项目将要实现的一些功能：   开发环境搭建 创建 Django 项目和 App 设计数据库 创建超级用户及后台管理 views 和 urls 的工作原理 Te">
+<meta name="twitter:image" content="http://ove06nbz7.bkt.clouddn.com/%E5%88%9B%E5%BB%BAmodels.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/29/我用Django搭建博客的全过程-1/"/>
+
+
+
+
+
+  <title>我用 Django 搭建博客的全过程(1) | 壹零贰肆</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">壹零贰肆</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">1024</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-search">
+          <a href="/search/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-search"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/29/我用Django搭建博客的全过程-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tularrrrr">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/1024.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="壹零贰肆">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">我用 Django 搭建博客的全过程(1)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-29T15:03:03+08:00">
+                2017-08-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/08/29/我用Django搭建博客的全过程-1/" class="leancloud_visitors" data-flag-title="我用 Django 搭建博客的全过程(1)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong><em>一</em></strong><br>我最早是在 Django 上搭建博客的，后来发现需要购买域名和空间后再部署到线上，索性就转到 hexo+coding 来搭建博客了。所以接下来我将简单说一下这两者搭博的区别，只是我个人的感受，不一定专业。</p>
+<p><strong><em>二</em></strong><br>附上我在 README 上写的本项目将要实现的一些功能：</p>
+<blockquote>
+<ol>
+<li>开发环境搭建</li>
+<li>创建 Django 项目和 App</li>
+<li>设计数据库</li>
+<li>创建超级用户及后台管理</li>
+<li>views 和 urls 的工作原理</li>
+<li>Templates 模板</li>
+<li>配置 MarkDown</li>
+<li>归档，列出当前博客中所有文章并且显示时间</li>
+<li>About 界面</li>
+<li>标签分类</li>
+<li>RSS 和分页、Readmore</li>
+</ol>
+<p><em>我没做成功的：搜索功能</em></p>
+</blockquote>
+<a id="more"></a>
+<p><strong><em>三</em></strong><br><strong>1. 开发环境搭建</strong><br>Python、Django、Git 等这些就不用说了，贴一个我的开发环境（仅供参考，你可以有自己的配置）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ubuntu16.04LTS   # 我的操作系统</div><div class="line">Python 3.5.2</div><div class="line">Django 1.11.0</div><div class="line">Prue             # 一个轻量级 CSS 模块，不需安装也可使用</div></pre></td></tr></table></figure></p>
+<p>安装方法网上很多，我不详述了。<br>开门见山，直接去到第二点。</p>
+<p><strong>2. 创建 Django 项目和 App</strong><br>我并没有使用虚拟环境 Virtualenv，所以配置环境变量会有些区别。我按着我之前搭博的步骤来写这篇博文。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ mkdir site                                     # 创建一个文件夹放博客的所有代码</div><div class="line">$ cd site</div><div class="line">/site $ django-admin startproject blog           # 切换到 site 里创建 blog 项目</div><div class="line">/site/blog $ python3 manage.py startapp article          # 切换到 blog 里创建 App：article</div><div class="line">注意：$ 前面表示所处的文件夹，比如：/site$ 就是切换到 site 文件夹内。</div></pre></td></tr></table></figure></p>
+<p>OK! 基本的已经搞定，这步完成便可查看整个项目的结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/site $ ls</div><div class="line">blog</div><div class="line"></div><div class="line">/site/blog $ ls</div><div class="line">article </div><div class="line">blog </div><div class="line">manage.py db.sqlite3 (创建数据库后会有这个，现在步骤还没有它)</div><div class="line"></div><div class="line">/site/blog/blog $ ls      # 第二个 blog 文件夹</div><div class="line">__init__.py </div><div class="line">__init.pyc__ </div><div class="line">settings.py </div><div class="line">settings.pyc </div><div class="line">urls.py </div><div class="line">wsgi.py</div></pre></td></tr></table></figure></p>
+<p>小提示：如果你也和我一样用python3 的版本，建议在 manage.py 的首行添加：<code>#!/usr/bin/env python3</code><br>设置 settings.py，把新增的’app’：article 加到 settings.py 的 INSTALLED_APPS 中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">INSTALLED_APPS = [</div><div class="line">    &apos;django.contrib.admin&apos;,</div><div class="line">    &apos;django.contrib.auth&apos;,</div><div class="line">    &apos;django.contrib.contenttypes&apos;,</div><div class="line">    &apos;django.contrib.sessions&apos;,</div><div class="line">    &apos;django.contrib.messages&apos;,</div><div class="line">    &apos;django.contrib.staticfiles&apos;,</div><div class="line">    &apos;article&apos;,                      # new</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>运行程序。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ python3 manage.py runserver</div><div class="line">运行成功</div><div class="line">It worked!</div><div class="line">Congratulations on your first Django-Powered page.</div></pre></td></tr></table></figure></p>
+<p><strong>3.设计数据库</strong></p>
+<blockquote>
+<p>说一下数据库这块 Django 搭博和 hexo 搭博的区别，众所周知，hexo 搭建在 GitHub 或 Coding 的 Pages 服务上，所建博客都是静态的，而 Django 可以搭建一个动态的网站而不仅仅一个博客。<br><strong>这里不得不提一下 Django 强大的数据库功能：它利用 Python 的类继承，简单几行代码就能拥有一个丰富、动态的数据库操作接口(API)，每个 Django Model 都继承自 django.db.models.Model，在 Model 中每个属性(attribute)都代表一个 Datebase File，你也能通过 Django Model API 进行数据库的增、删、查、改操作。</strong></p>
+</blockquote>
+<p>Django 默认使用 SQLite3 数据库，你可以改用别的也可以不改，在 settings.py 里查看或修改数据库设置。<br>现在来创建数据库，试想一下建立一个博客需要哪些要素，一个博客最基本应该具有以下这些：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">博客题目：title</div><div class="line">博客标签：category</div><div class="line">博客日期：date_time</div><div class="line">博客正文：content</div></pre></td></tr></table></figure></p>
+<p><em>说明：我是之后用了 hexo 才知道 category 和 tags 的区别，在 Django 里我把 category 当 tags 用了，如果觉得别扭你也可以把‘博客标签’改为’tags‘，不影响。</em></p>
+<p>创建数据库，编辑 models.py<br><img src="http://ove06nbz7.bkt.clouddn.com/%E5%88%9B%E5%BB%BAmodels.png" alt="创建 models"></p>
+<p>讲解：这里用到了 Python 中类的继承，<strong>str</strong>(self)函数 Article 对象要怎么表示自己，默认使用<article: article="" object="">来表示对象，以上代码告诉系统使用‘title’来表示这个对象。</article:></p>
+<ul>
+<li>CharField 用于存储字符串，max_length 设置最大长度为 100</li>
+<li>TextField 用于存储大量文本</li>
+<li>DateTimeField 用于存储时间，auto_now_add 设置 True 表示自动设置对象增加时间</li>
+</ul>
+<p>更新、同步数据库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ python3 manage.py makemigrations</div><div class="line">$ python3 manage.py migrate</div></pre></td></tr></table></figure></p>
+<p><strong>进入 Django Shell 对数据库进行增、删、改、查操作</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">$ python3 manage.py shell                 # 进入 Django Shell </div><div class="line"></div><div class="line">&gt;&gt;&gt; from article.models import Article    # 引入我们之前创建的数据库</div><div class="line">&gt;&gt;&gt; # create 数据库增加操作</div><div class="line">&gt;&gt;&gt; Article.objects.create(title = &apos;第一篇博文&apos;, category = &apos;other&apos;, content = &apos;第一篇内容&apos;)</div><div class="line">&lt;Article: Article objects&gt;</div><div class="line"></div><div class="line">&gt;&gt;&gt; Article.objects.all()                 # 查看全部对象，返回列表，无对象返回空列表</div><div class="line">&gt;&gt;&gt; Article.objects.get(id=1)             # 返回符合条件的对象</div><div class="line"></div><div class="line">&gt;&gt;&gt; first = Article.objects.get(id=1)</div><div class="line">&gt;&gt;&gt; first.title                           # 获取对象的 title</div><div class="line">第一篇博文</div><div class="line"></div><div class="line">&gt;&gt;&gt; first.category                        # 获取对象的 category</div><div class="line">&gt;&gt;&gt; first.date_time                       # 获取对象的 date_time</div><div class="line">&gt;&gt;&gt; first.content                         # 获取对象的 content</div><div class="line"></div><div class="line">&gt;&gt;&gt; first.content = &apos;修改正文&apos;             # 用点(.)操作修改</div><div class="line"></div><div class="line">&gt;&gt;&gt; # delete 数据库删除操作</div><div class="line">&gt;&gt;&gt; first.delete                          # 因为只创建了一个对象，删除后返回空列表</div><div class="line"></div><div class="line">&gt;&gt;&gt; # filter() 过滤操作</div><div class="line">&gt;&gt;&gt; Article.objects.filter(title=&apos;&apos;)          # 按标题过滤</div><div class="line">&gt;&gt;&gt; Article.objects.filter(title=&apos;&apos;, id=&apos;&apos;)   # 多个条件过滤</div><div class="line"></div><div class="line">&gt;&gt;&gt; # order 数据排序</div><div class="line">&gt;&gt;&gt; Article.objects.order_by(&quot;title&quot;)         </div><div class="line">&gt;&gt;&gt; Article.objects.order_by(&quot;-title&quot;)        # 倒序</div><div class="line"> </div><div class="line">&gt;&gt;&gt; # 连锁查询</div><div class="line">&gt;&gt;&gt; Article.objects.filter(title__contains=&apos;Django&apos;).order_by(&quot;-id&quot;)</div><div class="line"></div><div class="line">&gt;&gt;&gt; # 限制返回数据的数量</div><div class="line">&gt;&gt;&gt; Article.objects.filter(title__contains=&apos;Django&apos;)[0]</div><div class="line">&gt;&gt;&gt; Article.objects.filter(title__contains=&apos;Django&apos;)[0:3]</div></pre></td></tr></table></figure></p>
+<p>好吧，其实这些可以在 Django admin 后台管理界面里操作，超级方便的对博客内容增删改查。</p>
+<p><strong>4. 创建超级用户及后台管理</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ python3 manage.py createsuperuser</div><div class="line">Username:</div><div class="line">Email:</div><div class="line">Password:</div></pre></td></tr></table></figure></p>
+<p>特想说代码撸到这里，感觉英文都提高了不少呢！！<br>继续，在 admin.py 中添加代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">from article.models import Article</div><div class="line"></div><div class="line"># Register your models here.</div><div class="line">admin.site.register(Artcile)</div></pre></td></tr></table></figure></p>
+<p>现在可以访问： 127.0.0.1:8000/admin  (这是我分到的端口，你用你们自己的)<br><img src="http://ove06nbz7.bkt.clouddn.com/admin%E7%99%BB%E5%BD%95.png" alt="admin 登录界面"><br>输入之前设置的用户名和密码进入 admin 后台。<br><img src="http://ove06nbz7.bkt.clouddn.com/admin%E5%90%8E%E5%8F%B0.png" alt="admin 后台"></p>
+<p><strong><em>四</em></strong><br>好吧，写到这里发现实在太长了，决定分开来写。<br>最后，我会加油写！</p>
+
+      
+    </div>
+
+    
+    
+    
+
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Django/" rel="tag"><i class="fa fa-tag"></i> Django</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/24/自学编程的心路历程/" rel="next" title="自学编程的心路历程">
+                <i class="fa fa-chevron-left"></i> 自学编程的心路历程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/30/我用Django搭建博客的全过程-2/" rel="prev" title="我用 Django 搭建博客的全过程(2)">
+                我用 Django 搭建博客的全过程(2) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/1024.png"
+              alt="tularrrrr" />
+          
+            <p class="site-author-name" itemprop="name">tularrrrr</p>
+            <p class="site-description motion-element" itemprop="description">坚持很酷</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/12141011" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/u/tularrrrr" target="_blank" title="Coding">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      Coding
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://taimingfawu.cn/" title="太鸣法务官方网站" target="_blank">太鸣法务官方网站</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tularrrrr</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.2</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qv2clFcjpItQYjEPIa740EDl-gzGzoHsz", "gHx9LaPY2Uy1l0Nz4mKv9WQp");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
